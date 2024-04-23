@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
 
+### Plot Indicator Function
 ### Plot Indicator Functions
 def plot_function(data, indicator_df, tickers):
     # Convert 'Date' column to datetime format
@@ -36,5 +37,3 @@ def plot_function(data, indicator_df, tickers):
     plt.setp(plt.gca().get_xticklabels(), rotation=30)
     plt.tight_layout()
     plt.show()
-
-    return plt
