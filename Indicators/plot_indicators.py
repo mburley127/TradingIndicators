@@ -5,7 +5,6 @@ import warnings
 warnings.filterwarnings('ignore')
 
 ### Plot Indicator Function
-### Plot Indicator Functions
 def plot_function(data, indicator_df, tickers):
     # Convert 'Date' column to datetime format
     data['Date'] = pd.to_datetime(data['Date'])
