@@ -1,2 +1,1 @@
-# TradingIndicators
-Stock Trading Key Indicators
+# Stock Trading Key Indicators Analysis
