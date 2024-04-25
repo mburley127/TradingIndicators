@@ -4,6 +4,8 @@ This repository contains implementations of various stock trading indicators, as
 
 1. **Indicators**
    - `getTickers.ipynb`: Contains the function to load in desired stock ticker Date, Close, High, and Low pricing data using the yahoo finance (yfinance) folder.
+   - `plotIndicators.ipynb`: The function initially filters the stock data frame and indicator data frame based on the selected start date to plot the desired data. Subsequently, the function generates a plot illustrating the close prices of each ticker versus the date. Additionally, the function generates a plot demonstrating the computed values for each indicator versus the date.
+   - `MACD.ipynb`: 
 
 2. **IndicatorAnalysis**
    - `IndicatorAnalysis`: Contains the implementation of the
