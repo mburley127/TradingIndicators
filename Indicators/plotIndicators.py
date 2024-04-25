@@ -5,11 +5,11 @@ import warnings
 warnings.filterwarnings('ignore')
 
 ### Plot Indicator Function
-def plot_function(data, indicator_df, tickers):
+def plot_function(data, indicator_df, tickers, indicator_type):
     # Convert 'Date' column to datetime format
     data['Date'] = pd.to_datetime(data['Date'])
 
-    # Filter stock_data and mult_adx based on start_date
+    # Filter stock_data and indicator_df based on start_date
     start_date = pd.Timestamp('2024-01-01')  # Assuming start_date is '2024-01-01'
     filtered_stock_data = data[data['Date'] >= start_date]
     filtered_indicator_data = indicator_df[indicator_df.index.isin(filtered_stock_data.index)]
@@ -24,13 +24,13 @@ def plot_function(data, indicator_df, tickers):
     plt.xlabel('Dates')
     plt.grid(True)
 
-    # Add ADX Subplot
+    # Add Indicator Subplot
     bx = fig.add_subplot(2, 1, 2)
     for t in tickers:
         plt.plot(filtered_stock_data['Date'], filtered_indicator_data[t], lw = 1, label = t)
-    plt.title('ADX Values')
+    plt.title(indicator_type + ' Values')
     plt.legend(loc=2, prop={'size': 9.5})
-    plt.ylabel('Calculated ADX')
+    plt.ylabel('Calculated ' + indicator_type)
     plt.xlabel('Dates')
     plt.grid(True)
     plt.setp(plt.gca().get_xticklabels(), rotation=30)
