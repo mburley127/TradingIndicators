@@ -9,6 +9,8 @@ This repository contains implementations of various stock trading indicators, as
    - `ADX.ipynb`: ADX (Average Directional Index) is used to quantify the strength of a trend. It's part of the Directional Movement System and measures the strength of a trend, whether it's an uptrend or a downtrend, without indicating the direction of the trend itself. See "Whitepapers" folder for the full indicator calculation.
    - `CCI.ipynb`: CCI (Commodity Channel Index) calculates the relationship between an asset's price, its moving average, and its standard deviation. The CCI is used to identify overbought or oversold conditions in an asset and can help traders determine potential reversal points. See "Whitepapers" folder for the full indicator calculation.
    - `RSI.ipynb`: RSI (Relative Strength Index) measures the magnitude of recent price changes to evaluate overbought or oversold conditions in an asset. It's a momentum oscillator that ranges from 0 to 100 and is often used to identify potential trend reversals or confirm the strength of a trend. See "Whitepapers" folder for the full indicator calculation.
+  
+     Indicator Values verification: https://aiolux.com/reports/analytics-technical-indicators?scroll=pills-tab&symbol=GOOG&tab_name=macd&utf8=%E2%9C%93
 
 2. **IndicatorAnalysis**
    - `IndicatorAnalysis`: Contains the implementation of the
