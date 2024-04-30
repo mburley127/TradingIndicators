@@ -1,9 +1,5 @@
 # Stock Trading Key Indicators Analysis
 
-This repository contains implementations of various stock trading indicators, as well as a full analysis using 50 stock tickers in Python. The indicator and analysis folders included are:
-
-### Project Overview
-
 This repository contains implementations of various stock trading indicators and a full analysis using 50 stock tickers in Python. The project is structured into the following folders:
 
 ### 1. IndicatorAnalysis
@@ -25,7 +21,8 @@ A link to verify indicator values is provided [here](https://aiolux.com/reports/
 
 ### 2. Functions
 
-- `IndicatorFunctions.py`: This folder contains all the necessary functions to perform the Indicator Analysis as shown below:
+#### IndicatorFunctions.py
+This folder contains all the necessary functions to perform the Indicator Analysis as shown below:
     - `getTickers()`: Contains the function to load in desired stock ticker Date, Close, High, and Low pricing data using the Yahoo Finance (yfinance) library.
     - `calculate_rsi()`: Calculates the Relative Strength Index (RSI) value for each ticker based on price changes. RSI is calculated using the average of upward price changes and downward price changes over a specified period, typically 14 days. The formula for RSI involves calculating the Relative Strength (RS) as the ratio of average gains to average losses, and then converting RS into the RSI value using the formula: RSI = 100 - (100 / (1 + RS)).
     - `calculate_cci()`: Computes the Commodity Channel Index (CCI) value for each ticker, which measures the relationship between an asset's price, its moving average, and its standard deviation. CCI is used to identify overbought or oversold conditions in an asset. The CCI formula involves calculating the Typical Price (TP) as the average of high, low, and close prices, the Simple Moving Average (SMA) of TP, the Mean Deviation (MD) as the absolute difference between TP and SMA, and then applying the CCI formula: CCI = (TP - SMA) / (0.015 * MD).
