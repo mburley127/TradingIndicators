@@ -2,26 +2,35 @@
 
 This repository contains implementations of various stock trading indicators, as well as a full analysis using 50 stock tickers in Python. The indicator and analysis folders included are:
 
-1. **IndicatorAnalysis**
-   - `MACD.ipynb`: MACD (Moving Average Convergence Divergence) calculates the difference between a short-term and a long-term exponential moving average (EMA) of an asset's price. The project first analyzes 50 stock tickers, and then runs the `calculate_macd` function to output the computed MACD values. Using the computed MACD values, a filtering method is applied in order to produce buying or selling trends (expand here on logic). Finally, the `plot_function()` is used to display a selected number of tickers chosen after the filter is applied. 
-   - `ADX.ipynb`: ADX (Average Directional Index) is used to quantify the strength of a trend. It's part of the Directional Movement System and measures the strength of a trend, whether it's an uptrend or a downtrend, without indicating the direction of the trend itself. The project first analyzes 50 stock tickers, and then runs the `adx_mult_tickers()` function to output the computed ADX values. Using the computed ADX values, a filtering method is applied in order to produce buying or selling trends (expand here on logic). Finally, the `plot_function()` is used to display a selected number of tickers chosen after the filter is applied. 
-   - `CCI.ipynb`: CCI (Commodity Channel Index) calculates the relationship between an asset's price, its moving average, and its standard deviation. The CCI is used to identify overbought or oversold conditions in an asset and can help traders determine potential reversal points. The project first analyzes 50 stock tickers, and then runs the `calculate_cci` function to output the computed CCI values. Using the computed CCI values, a filtering method is applied in order to produce buying or selling trends by performing the following:
-     Below -100 - Oversold conditions, price has moved significantly below its average, suggesting a potential downtrend or extended period of weakness, generating a potential SELL signal.
-     Above +100 - Overbought conditions, upward trend is beginning, generating a potential BUY signal.
-Finally, the `plot_function()` is used to display a selected number of tickers chosen after the filter is applied. 
-   - `RSI.ipynb`: RSI (Relative Strength Index) measures the magnitude of recent price changes to evaluate overbought or oversold conditions in an asset. It's a momentum oscillator that ranges from 0 to 100 and is often used to identify potential trend reversals or confirm the strength of a trend. The project first analyzes 50 stock tickers, and then runs the `calculate_rsi` function to output the computed RSI values. Using the computed RSI values, a filtering method is applied in order to produce buying or selling trends by performing the following:
-     Below 30 - indicate oversold conditions which generates a potential BUY signal, expect the price to rebound or correct upward after being oversold from downward selling pressure
-     Above 70 - indicate overbought conditions which generates a potential SELL signal
-Finally, the `plot_function()` is used to display a selected number of tickers chosen after the filter is applied. 
-  
-     Indicator Values verification: https://aiolux.com/reports/analytics-technical-indicators?scroll=pills-tab&symbol=GOOG&tab_name=macd&utf8=%E2%9C%93
+### Project Overview
 
-2. **Functions**
-   - `IndicatorFunctions.py`: This folder contains all the necessary functions to perform the Indicator Analysis as shown below:
-        - `getTickers()`: Contains the function to load in desired stock ticker Date, Close, High, and Low pricing data using the yahoo finance (yfinance) folder.
-        - `calculate_rsi()`: Contains the function to calculate the RSI value. The calculation is done by first computing the price changes for each ticker and seperating into gain/loss columns. See the "Whitepapers" folder for the full indicator calculation.
-        - `calculate_cci()`:
-        - `calculate_macd()`:
-        - `get_ADX()`:
-        - `adx_mult_tickers()`:
-        - `plot_function()`: The function initially filters the stock data frame and indicator data frame based on the selected start date to plot the desired data. Next, the function generates a plot illustrating the close prices of each ticker versus the date. Additionally, the function generates a plot demonstrating the computed values for each indicator versus the date.
+This repository contains implementations of various stock trading indicators and a full analysis using 50 stock tickers in Python. The project is structured into the following folders:
+
+### IndicatorAnalysis
+
+#### MACD.ipynb
+MACD (Moving Average Convergence Divergence) calculates the difference between a short-term and a long-term exponential moving average (EMA) of an asset's price. The notebook first analyzes 50 stock tickers and then computes MACD values using the `calculate_macd` function. A filtering method is applied to generate buying or selling trends based on the MACD values. Finally, the `plot_function()` is used to display selected tickers after applying the filter.
+
+#### ADX.ipynb
+ADX (Average Directional Index) quantifies the strength of a trend without indicating its direction. The notebook analyzes 50 stock tickers and computes ADX values using the `adx_mult_tickers()` function. A filtering method is applied to generate buying or selling trends based on the ADX values. Finally, the `plot_function()` is used to display selected tickers after applying the filter.
+
+#### CCI.ipynb
+CCI (Commodity Channel Index) identifies overbought or oversold conditions in an asset. The notebook analyzes 50 stock tickers and computes CCI values using the `calculate_cci` function. A filtering method is applied to generate buying or selling trends based on the CCI values. The logic for filtering includes conditions such as below -100 indicating oversold conditions and above +100 indicating overbought conditions. Finally, the `plot_function()` is used to display selected tickers after applying the filter.
+
+#### RSI.ipynb
+RSI (Relative Strength Index) measures recent price changes to evaluate overbought or oversold conditions in an asset. The notebook analyzes 50 stock tickers and computes RSI values using the `calculate_rsi` function. A filtering method is applied to generate buying or selling trends based on the RSI values. The logic for filtering includes conditions such as below 30 indicating oversold conditions (potential BUY signal) and above 70 indicating overbought conditions (potential SELL signal). Finally, the `plot_function()` is used to display selected tickers after applying the filter.
+
+#### Indicator Values Verification
+A link to verify indicator values is provided [here](https://aiolux.com/reports/analytics-technical-indicators?scroll=pills-tab&symbol=GOOG&tab_name=macd&utf8=%E2%9C%93).
+
+### Functions
+
+- `IndicatorFunctions.py`: This folder contains all the necessary functions to perform the Indicator Analysis as shown below:
+    - `getTickers()`: Contains the function to load in desired stock ticker Date, Close, High, and Low pricing data using the Yahoo Finance (yfinance) library.
+    - `calculate_rsi()`: Calculates the Relative Strength Index (RSI) value for each ticker based on price changes. RSI is calculated using the average of upward price changes and downward price changes over a specified period, typically 14 days. The formula for RSI involves calculating the Relative Strength (RS) as the ratio of average gains to average losses, and then converting RS into the RSI value using the formula: RSI = 100 - (100 / (1 + RS)).
+    - `calculate_cci()`: Computes the Commodity Channel Index (CCI) value for each ticker, which measures the relationship between an asset's price, its moving average, and its standard deviation. CCI is used to identify overbought or oversold conditions in an asset. The CCI formula involves calculating the Typical Price (TP) as the average of high, low, and close prices, the Simple Moving Average (SMA) of TP, the Mean Deviation (MD) as the absolute difference between TP and SMA, and then applying the CCI formula: CCI = (TP - SMA) / (0.015 * MD).
+    - `calculate_macd()`: Computes the Moving Average Convergence Divergence (MACD) value for each ticker by comparing short-term (12-day) and long-term (26-day) exponential moving averages (EMA). The MACD line is calculated as the difference between these EMAs, while the Signal line is a 9-day EMA of the MACD line. The MACD histogram is computed as the difference between the MACD line and the Signal line.
+    - `get_ADX()`: Calculates the Average Directional Index (ADX) to quantify trend strength for each ticker. ADX is part of the Directional Movement System and measures the strength of a trend, whether it's an uptrend or a downtrend, without indicating the direction of the trend itself. The ADX calculation involves computing the Positive Directional Movement (+DM), Negative Directional Movement (-DM), True Range (TR), Smoothed +DM, Smoothed -DM, and then deriving ADX based on these values.
+    - `adx_mult_tickers()`: Computes the Average Directional Index (ADX) values for multiple tickers, allowing for trend strength analysis across a range of assets. This function utilizes the ADX calculation logic for individual tickers but extends it to handle multiple tickers simultaneously.
+    - `plot_function()`: Filters stock and indicator data based on the selected start date and generates plots illustrating close prices and computed indicator values over time. This function enables visual analysis of stock price movements and technical indicator trends, aiding in decision-making for traders and investors.
+
