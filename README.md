@@ -14,12 +14,14 @@ ADX (Average Directional Index) quantifies the strength of a trend without indic
 CCI (Commodity Channel Index) identifies overbought or oversold conditions in an asset. The notebook analyzes 50 stock tickers and computes CCI values using the `calculate_cci` function. A filtering method is applied to generate buying or selling trends based on the CCI values. The logic for filtering includes the following: 
   - Below -100 - Oversold conditions, price has moved significantly below its average, suggesting a potential downtrend or extended period of weakness, generating a potential SELL signal
   - Above +100 - Overbought conditions, upward trend is beginning, generating a potential BUY signal. 
+
 Finally, the `plot_function()` is used to display selected tickers after applying the filter.
 
 #### RSI.ipynb
 RSI (Relative Strength Index) measures recent price changes to evaluate overbought or oversold conditions in an asset. The notebook analyzes 50 stock tickers and computes RSI values using the `calculate_rsi` function. A filtering method is applied to generate buying or selling trends based on the RSI values. The logic for filtering includes the following: 
   - Below 30 - indicate oversold conditions which generates a potential BUY signal, expect the price to rebound or correct upward after being oversold from downward selling pressure
   - Above 70 - indicate overbought conditions which generates a potential SELL signal.
+    
 Finally, the `plot_function()` is used to display selected tickers after applying the filter.
 
 #### Indicator Values Verification
