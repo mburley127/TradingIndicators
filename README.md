@@ -17,7 +17,10 @@ CCI (Commodity Channel Index) identifies overbought or oversold conditions in an
 Finally, the `plot_function()` is used to display selected tickers after applying the filter.
 
 #### RSI.ipynb
-RSI (Relative Strength Index) measures recent price changes to evaluate overbought or oversold conditions in an asset. The notebook analyzes 50 stock tickers and computes RSI values using the `calculate_rsi` function. A filtering method is applied to generate buying or selling trends based on the RSI values. The logic for filtering includes conditions such as below 30 indicating oversold conditions (potential BUY signal) and above 70 indicating overbought conditions (potential SELL signal). Finally, the `plot_function()` is used to display selected tickers after applying the filter.
+RSI (Relative Strength Index) measures recent price changes to evaluate overbought or oversold conditions in an asset. The notebook analyzes 50 stock tickers and computes RSI values using the `calculate_rsi` function. A filtering method is applied to generate buying or selling trends based on the RSI values. The logic for filtering includes the following: 
+    - Below 30 - indicate oversold conditions which generates a potential BUY signal, expect the price to rebound or correct upward after being oversold from downward selling pressure
+    - Above 70 - indicate overbought conditions which generates a potential SELL signal
+Finally, the `plot_function()` is used to display selected tickers after applying the filter.
 
 #### Indicator Values Verification
 A link to verify indicator values is provided [here](https://aiolux.com/reports/analytics-technical-indicators?scroll=pills-tab&symbol=GOOG&tab_name=macd&utf8=%E2%9C%93).
