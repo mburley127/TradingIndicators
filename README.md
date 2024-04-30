@@ -6,7 +6,7 @@ This repository contains implementations of various stock trading indicators, as
 
 This repository contains implementations of various stock trading indicators and a full analysis using 50 stock tickers in Python. The project is structured into the following folders:
 
-### IndicatorAnalysis
+### 1. IndicatorAnalysis
 
 #### MACD.ipynb
 MACD (Moving Average Convergence Divergence) calculates the difference between a short-term and a long-term exponential moving average (EMA) of an asset's price. The notebook first analyzes 50 stock tickers and then computes MACD values using the `calculate_macd` function. A filtering method is applied to generate buying or selling trends based on the MACD values. Finally, the `plot_function()` is used to display selected tickers after applying the filter.
@@ -23,7 +23,7 @@ RSI (Relative Strength Index) measures recent price changes to evaluate overboug
 #### Indicator Values Verification
 A link to verify indicator values is provided [here](https://aiolux.com/reports/analytics-technical-indicators?scroll=pills-tab&symbol=GOOG&tab_name=macd&utf8=%E2%9C%93).
 
-### Functions
+### 2. Functions
 
 - `IndicatorFunctions.py`: This folder contains all the necessary functions to perform the Indicator Analysis as shown below:
     - `getTickers()`: Contains the function to load in desired stock ticker Date, Close, High, and Low pricing data using the Yahoo Finance (yfinance) library.
