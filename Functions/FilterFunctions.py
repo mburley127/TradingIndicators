@@ -1,5 +1,5 @@
-### Function for CCI and RSI to Filter based on Buying/Selling Thresholds
-def cci_rsi_filter_indicators(indicator_df, upper_threshold, lower_threshold, tickers):
+### Function for CCI, RSI, and ADX to Filter based on Buying/Selling Thresholds
+def filter_indicators(indicator_df, upper_threshold, lower_threshold, tickers):
     # Set new filtered df to the input indicator_df
     filtered_df = indicator_df.copy()
     
