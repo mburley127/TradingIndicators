@@ -17,12 +17,9 @@ def cci_rsi_filter_indicators(indicator_df, upper_threshold, lower_threshold, ti
         else:
             # Update buy/sell lists with tickers meeting the conditions
             if indicator_value >= upper_threshold:
-                buy_signals.append((ticker, indicator_value))  # Append tuple of (ticker, CCI value) to buy_signals
+                buy_signals.append((ticker, indicator_value))  # Append tuple of (ticker, Indicator value) to buy_signals
             else:
-                sell_signals.append((ticker, indicator_value))  # Append tuple of (ticker, CCI value) to sell_signals
-    
-    # Print the filtered DataFrame (optional)
-    # print(filtered_df.tail(5))
+                sell_signals.append((ticker, indicator_value))  # Append tuple of (ticker, Indicator value) to sell_signals
     
     # Print tickers with potential buy and sell signals
     print("Tickers with potential BUY signals:")
