@@ -63,8 +63,11 @@ def calculate_macd(tickers, df):
         ema_26 = df['Close'][t].ewm(span = 26, adjust = False).mean()
         # Calculate MACD line (12-day EMA minus 26-day EMA)
         macd = ema_12 - ema_26
-        # Add MACD column to the DataFrame
+        # Calculate 9-day EMA of MACD line (Signal line)
+        signal_line = macd.ewm(span=9, adjust=False).mean()
+        # Add MACD and Signal columns to the DataFrame
         macd_df[t] = macd
+        macd_df[f"{t}_Signal"] = signal_line
         # Append last MACD value to macd_vals dictionary
         macd_vals[t] = macd_df[t].iloc[-1]
 
