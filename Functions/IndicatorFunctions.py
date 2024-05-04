@@ -103,7 +103,7 @@ def get_ADX(data, window):
     tr2 = pd.DataFrame(abs(data['High'] - data['Close'].shift(1)))
     tr3 = pd.DataFrame(abs(data['Low'] - data['Close'].shift(1)))
     frames = [tr1, tr2, tr3]
-    data['TR'] = pd.concat(frames, axis = 1, join = 'inner').max(axis = 1)
+    data['TR'] = pd.concat(frames, axis='columns', join='inner').max(axis='columns')
 
     # Calculate the Directional Movement (DM +/-) = Current High/Low - Previous High/Low (if both are positive, otherwise zero)
     for i in range(1, len(data)):
@@ -115,9 +115,9 @@ def get_ADX(data, window):
         data.at[i, 'NDM'] = abs(ndm) if ndm > 0 else 0
 
     # Smooth TR, PDM, and NDM using 14-period EMA
-    data['TR_Smooth'] = data['TR'].ewm(span = window, adjust = False).mean()
-    data['PDM_Smooth'] = data['PDM'].ewm(span = window, adjust = False).mean()
-    data['NDM_Smooth'] = data['NDM'].ewm(span = window, adjust = False).mean()
+    data['TR_Smooth'] = data['TR'].ewm(span=window, adjust=False).mean()
+    data['PDM_Smooth'] = data['PDM'].ewm(span=window, adjust=False).mean()
+    data['NDM_Smooth'] = data['NDM'].ewm(span=window, adjust=False).mean()
 
     # Calculate the Directional Indicators (DI+ and DI-) = (PDM / Smoothed TR) * 100 and = (NDM / Smoothed TR) * 100
     data['DI+'] = (data['PDM_Smooth'] / data['TR_Smooth']) * 100
@@ -127,14 +127,14 @@ def get_ADX(data, window):
     data['DX'] = (abs(data['DI+'] - data['DI-']) / (data['DI+'] + data['DI-'])) * 100
 
     # Calculate Average Directional Index (ADX) = 14-period EMA of DX
-    data['ADX'] = data['DX'].ewm(span = window, adjust = False).mean()
+    data['ADX'] = data['DX'].ewm(span=window, adjust=False).mean()
 
     return data
 
 
 ### Function for ADX Multiple Tickers
-def adx_mult_tickers(data, tickers, window = 14):
-    adx_df = pd.DataFrame()  # Initialize an empty DataFrame for storing ADX values
+def adx_mult_tickers(data, tickers, window=14):
+    adx_dfs = []  # Initialize a list to store DataFrames for each ticker's ADX values
 
     for t in tickers:
         # Extract data for the specific ticker using the MultiIndex
@@ -142,8 +142,18 @@ def adx_mult_tickers(data, tickers, window = 14):
         single_ticker_data.columns = single_ticker_data.columns.droplevel(1)  # Drop the second level of the columns index
         single_ticker_adx = get_ADX(single_ticker_data, window=window)
 
-        # Append the ADX values to the adx_df DataFrame
-        adx_df[t] = single_ticker_adx['ADX']
+        # Create a DataFrame for the current ticker's ADX, DI+, and DI- values
+        ticker_adx_df = pd.DataFrame({
+            (t, 'ADX'): single_ticker_adx['ADX'],
+            (t, 'DI+'): single_ticker_adx['DI+'],
+            (t, 'DI-'): single_ticker_adx['DI-']
+        })
+
+        # Append the DataFrame to the list
+        adx_dfs.append(ticker_adx_df)
+
+    # Concatenate all DataFrames in the list to create the final adx_df DataFrame
+    adx_df = pd.concat(adx_dfs, axis=1)
 
     return adx_df
 
