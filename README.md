@@ -5,7 +5,13 @@ This repository contains implementations of various stock trading indicators and
 ### 1. IndicatorAnalysis
 
 #### MACD.ipynb
-MACD (Moving Average Convergence Divergence) calculates the difference between a short-term and a long-term exponential moving average (EMA) of an asset's price. The notebook first analyzes 50 stock tickers and then computes MACD values using the `calculate_macd` function. A filtering method is applied to generate buying or selling trends based on the MACD values. Finally, the `plot_function()` is used to display selected tickers after applying the filter.
+MACD (Moving Average Convergence Divergence) calculates the difference between a short-term and a long-term exponential moving average (EMA) of an asset's price. The notebook first analyzes 50 stock tickers and then computes MACD values using the `calculate_macd` function. A filtering method is applied to generate buying or selling trends based on the MACD values using the following logic:
+  - Buy condition: 
+    - A buy condition is met if the MACD line of the current period is greater than the Signal line and the MACD line of the previous period is less than the Signal line of the previous period.
+  - Define sell condition: 
+    - A sell condition is met if the MACD line of the current period is less than the Signal line and the MACD line of the previous period is greater than the Signal line of the previous period.
+
+Finally, the `plot_function()` is used to display selected tickers after applying the filter.
 
 #### ADX.ipynb
 ADX (Average Directional Index) quantifies the strength of a trend without indicating its direction. The notebook analyzes 50 stock tickers and computes ADX values using the `adx_mult_tickers()` function. A filtering method is applied to generate buying or selling trends based on the ADX values. Then filtering is applied using the following logic:
