@@ -61,4 +61,9 @@ This folder contains all the necessary functions to perform the Indicator Analys
 
 - `plot_function()`: Filters stock and indicator data based on the selected start date and generates plots illustrating close prices and computed indicator values over time. This function enables visual analysis of stock price movements and technical indicator trends, aiding in decision-making for traders and investors.
 
+### 3. FilterFunctions
+
+This folder contains the multi-use function to perform the filtering on the CCI and RSI as shown below:
+- `filter_indicators()`: The function first checks to see the indicator value is within the specified thresholds, and if not the ticker is filtered out. The remaining tickers and then sorted into buy/sell lists provided tickers meet the specified conditions specific to the RSI and CCI indicators.
+
 
